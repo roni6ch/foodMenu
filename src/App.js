@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import "./App.scss";
+/* Components */
+import Header from "./components/Header";
+import SideMenu from "./components/SideMenu";
+import Base from "./components/Base";
+import useGlobalFlowState from "./store/FlowReducer";
+import FlowContext from "./store/FlowContext";
 
-function App() {
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    marginTop: "20px",
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+}));
+export default function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Container fixed>
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <FlowContext.Provider value={useGlobalFlowState()}>
+              <SideMenu />
+              <Base/>
+            </FlowContext.Provider>
+          </Grid>
+        </div>
+      </Container>
+    </>
   );
 }
+/*
+Your genderMale
+Physical ActivityCompleted
+MeatCompleted
+VeggiesCompleted
+FruitsCompleted
+ProductsCompleted
+EverydayCompleted
+Bad habitsCompleted
+Number of meals per dayCompleted
+Measurements // age/ weight/ height / target weight
 
-export default App;
+
+
+https://www.youtube.com/watch?v=zq834kwVBCs
+https://material-ui.com/components/grid/
+ */
