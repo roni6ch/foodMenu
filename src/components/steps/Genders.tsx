@@ -16,7 +16,7 @@ export default function Genders() {
         <Grid className={`${classes.paper}`} container spacing={3}>
             {genders.map(gender => (
                 <Grid key={gender} item xs={6}>
-                    <img src={`${gender}.png`} />
+                    <img src={`${gender}.png`} alt={`${gender}.png`} />
                 </Grid>
             ))}
         </Grid>

@@ -1,23 +1,21 @@
 import { useReducer } from "react";
-import FlowContext from "./FlowContext";
 
 const flowReducer = (state, action) => {
   switch (action.type) {
     case "NEXT_STEP":
-      return {
-        step: state.step + 1,
-      };
+      return { ...state, step: state.step + 1};
     case "PREV_STEP":
-      return {
-        step: state.step - 1,
-      };
+      return { ...state, step: state.step - 1};
     default:
       return state;
   }
 };
 
 const useGlobalFlowState = () => {
-  const [globalState, globalDispatch] = useReducer(flowReducer, {});
-  return {globalState, globalDispatch};
+  const [flowState, flowDispatch] = useReducer(flowReducer, {  
+    step : 0,
+    stepNames: ['Gender', 'Measurments', 'Activity']
+});
+  return {flowState, flowDispatch};
 };
 export default useGlobalFlowState;
