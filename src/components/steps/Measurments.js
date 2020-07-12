@@ -13,17 +13,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Genders() {
     const classes = useStyles();
     return (
-        <Grid className={`${classes.paper}`} container spacing={3}>
-            <Grid item>
+        <Grid className={`${classes.paper} slide-in-blurred-top`} container spacing={1}>
+            <Grid xs={6}>
                 <TextField required id="height" type="number" label="Height (CM)" />
             </Grid>
-            <Grid item>
+            <Grid xs={6}>
                 <TextField required id="age" type="number" label="Age" />
             </Grid>
-            <Grid item>
+             <Grid xs={6}>
                 <TextField required id="weight" type="number" label="Weight (KG)" />
             </Grid>
-            <Grid item>
+             <Grid xs={6}>
                 <TextField required id="target" type="number" label="Target Weight (KG)" />
             </Grid>
         </Grid>

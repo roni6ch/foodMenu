@@ -14,7 +14,7 @@ const flowReducer = (state, action) => {
 
 const useGlobalFlowState = () => {
   const [flowState, flowDispatch] = useReducer(flowReducer, {  
-    step : 1,
+    step : 0,
     stepNames: ['Gender', 'Measurments', 'Activity']
 });
   return {flowState, flowDispatch};
