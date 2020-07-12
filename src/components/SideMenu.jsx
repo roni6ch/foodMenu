@@ -5,8 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import StepContent from "@material-ui/core/StepContent";
-import Button from "@material-ui/core/Button";
 import FlowContext from "../store/FlowContext";
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function SideMenu() {
   const classes = useStyles();
-  const {flowState, flowDispatch} = useContext(FlowContext);
+  const {flowState} = useContext(FlowContext);
   return (
     <Grid item xs={3}>
       <Paper className={classes.paper}>
@@ -29,8 +27,6 @@ export default function SideMenu() {
           ))}
         </Stepper>
           </Paper>
-          <pre>
-        {JSON.stringify(flowState.globalState)}</pre>
     </Grid>
   );
 }

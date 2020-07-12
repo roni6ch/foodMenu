@@ -42,7 +42,7 @@ export default function App() {
 }
 /*
 Your genderMale
-Physical ActivityCompleted
+Physical Activity Completed
 MeatCompleted
 VeggiesCompleted
 FruitsCompleted
@@ -52,8 +52,5 @@ Bad habitsCompleted
 Number of meals per dayCompleted
 Measurements // age/ weight/ height / target weight
 
-
-
-https://www.youtube.com/watch?v=zq834kwVBCs
 https://material-ui.com/components/grid/
  */

@@ -1,10 +1,11 @@
 import { useReducer } from "react";
+import { constants } from './../helpers/constants';
 
 const flowReducer = (state, action) => {
   switch (action.type) {
-    case "NEXT_STEP":
+    case constants.NEXT_STEP:
       return { ...state, step: state.step + 1};
-    case "PREV_STEP":
+    case constants.PREV_STEP:
       return { ...state, step: state.step - 1};
     default:
       return state;
@@ -13,7 +14,7 @@ const flowReducer = (state, action) => {
 
 const useGlobalFlowState = () => {
   const [flowState, flowDispatch] = useReducer(flowReducer, {  
-    step : 0,
+    step : 1,
     stepNames: ['Gender', 'Measurments', 'Activity']
 });
   return {flowState, flowDispatch};
