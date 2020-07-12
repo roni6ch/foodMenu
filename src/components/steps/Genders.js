@@ -33,7 +33,7 @@ export default function Genders() {
                 <Grid key={gender} item xs={6} >
                     <img src={`${gender}.png`} alt={`${gender}.png`} 
                     className={`${classes.gender} ${formState.gender === gender && classes.active} slide-in-blurred-top`} 
-                    onClick={() => formDispatch({type: formConstants.GENDER,value: gender})}/>
+                    onClick={() => formDispatch({type: formConstants.GENDER, payload: gender})}/>
                 </Grid>
             ))}
         </Grid>

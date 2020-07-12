@@ -1,7 +1,9 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
+import FormContext from "../../store/FormContext";
+import { useState } from "reinspect";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -12,20 +14,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Genders() {
     const classes = useStyles();
+    const {formState, formDispatch} = useContext(FormContext);
     return (
         <Grid className={`${classes.paper} slide-in-blurred-top`} container spacing={1}>
-            <Grid xs={6}>
-                <TextField required id="height" type="number" label="Height (CM)" />
-            </Grid>
-            <Grid xs={6}>
-                <TextField required id="age" type="number" label="Age" />
-            </Grid>
-             <Grid xs={6}>
-                <TextField required id="weight" type="number" label="Weight (KG)" />
-            </Grid>
-             <Grid xs={6}>
-                <TextField required id="target" type="number" label="Target Weight (KG)" />
-            </Grid>
+            {Object.keys(formState.measurments).map(key => <Grid xs={6} item key={key}>
+                <TextField required id={key} type="number" label={key} 
+                onChange={(e) => formDispatch({type: key.toLocaleUpperCase(), payload: e.target.value})}/>
+            </Grid>)}
         </Grid>
     )
 }

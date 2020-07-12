@@ -5,4 +5,8 @@ export const constants = {
 
   export const formConstants = {
     GENDER:'GENDER',
+    HEIGHT:'HEIGHT',
+    WEIGHT:'WEIGHT',
+    AGE:'AGE',
+    TARGET:'TARGET',
   };

@@ -1,5 +1,5 @@
-import { useReducer } from "react";
 import { constants } from './../helpers/constants';
+import { useReducer } from "reinspect";
 
 const flowReducer = (state, action) => {
   switch (action.type) {
@@ -16,7 +16,7 @@ const useGlobalFlowState = () => {
   const [flowState, flowDispatch] = useReducer(flowReducer, {  
     step : 0,
     stepNames: ['Gender', 'Measurments', 'Activity']
-});
+},null,'useGlobalFlowState');
   return {flowState, flowDispatch};
 };
 export default useGlobalFlowState;

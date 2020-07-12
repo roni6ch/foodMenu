@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   return (
-    <>
+    <> 
       <Header />
       <Container fixed>
         <div className={classes.root}>

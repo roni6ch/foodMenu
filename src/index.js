@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import { StateInspector } from "reinspect";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <App />,
+  <StateInspector name="App">
+    <App />
+  </StateInspector>,
   document.getElementById('root')
 );
 
