@@ -1,14 +1,18 @@
 import React from "react";
+import "./App.scss";
+/* material-ui */
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import "./App.scss";
+/* store */
+import useGlobalFlowState from "./store/FlowReducer";
+import useGlobalFormState from "./store/FormReducer";
+import FlowContext from "./store/FlowContext";
+import FormContext from "./store/FormContext";
 /* Components */
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
 import Base from "./components/Base";
-import useGlobalFlowState from "./store/FlowReducer";
-import FlowContext from "./store/FlowContext";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,8 +35,10 @@ export default function App() {
         <div className={classes.root}>
           <Grid container spacing={3}>
             <FlowContext.Provider value={useGlobalFlowState()}>
+            <FormContext.Provider value={useGlobalFormState()}>
               <SideMenu />
               <Base/>
+            </FormContext.Provider>
             </FlowContext.Provider>
           </Grid>
         </div>

@@ -1,6 +1,7 @@
 export const constants = {
     NEXT_STEP:'NEXT_STEP',
     PREV_STEP:'PREV_STEP',
+    NEXT_STEP_STATUS:'NEXT_STEP_STATUS',
   };
 
   export const formConstants = {
@@ -9,4 +10,5 @@ export const constants = {
     WEIGHT:'WEIGHT',
     AGE:'AGE',
     TARGET:'TARGET',
+    ACTIVITY:'ACTIVITY',
   };

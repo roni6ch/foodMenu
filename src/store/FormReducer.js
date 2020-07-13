@@ -4,8 +4,6 @@ import { useReducer } from "reinspect";
 
 
 const formReducer = (state, action) => {
-  console.log(action);
-  
   switch (action.type) {
     case formConstants.GENDER:
       return { ...state, gender: action.payload };
@@ -17,6 +15,8 @@ const formReducer = (state, action) => {
       return { ...state, measurments: { ...state.measurments, age: action.payload } };
     case formConstants.TARGET:
       return { ...state, measurments: { ...state.measurments, target: action.payload } };
+    case formConstants.ACTIVITY:
+      return { ...state, activity: action.payload };
     default:
       return state;
   }
@@ -30,8 +30,9 @@ const useGlobalFormState = () => {
       age: '',
       weight: '',
       target: ''
-    }
-  },null,'useGlobalFormState');
+    },
+    activity: null,
+  }, null, 'useGlobalFormState');
   return { formState, formDispatch };
 };
 export default useGlobalFormState;

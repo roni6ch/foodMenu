@@ -1,15 +1,11 @@
-import React , { useContext } from 'react';
+import React , { useContext , useEffect} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FormContext from "../../store/FormContext";
+import FlowContext from "../../store/FlowContext";
 import { formConstants } from '../../helpers/constants';
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-    },
     gender:{
         "&:hover , &:active":{
             backgroundColor: theme.palette.primary.light,
@@ -26,9 +22,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Genders() {
     const classes = useStyles();
     const genders = ['male', 'female'];
-    const {formState, formDispatch} = useContext(FormContext);
-    return (
-        <Grid className={`${classes.paper}`}  container spacing={3}>
+    const { flowState, flowDispatch } = useContext(FlowContext);
+    const { formState, formDispatch } = useContext(FormContext);
+
+    useEffect(() => {
+        if (formState.gender)
+        flowDispatch({type: 'NEXT_STEP_STATUS', payload: true});
+      },[formState.gender]);
+
+    return (<>
             {genders.map(gender => (
                 <Grid key={gender} item xs={6} >
                     <img src={`${gender}.png`} alt={`${gender}.png`} 
@@ -36,6 +38,6 @@ export default function Genders() {
                     onClick={() => formDispatch({type: formConstants.GENDER, payload: gender})}/>
                 </Grid>
             ))}
-        </Grid>
+            </>
     )
 }
