@@ -18,14 +18,22 @@ const useGlobalFlowState = () => {
   const [flowState, flowDispatch] = useReducer(
     flowReducer,
     {
-      step: 0,
-      stepNames: ["Gender", "Measurments", "Activity"],
+      step: 3,
+      stepNames: ["Gender", "Measurments", "Activity","Meats"],
       activities: [
         "Almost no physical activity",
         "I often go for a walk",
         "I exercise 1 - 2 a week",
         "I exercise 3 - 5 times a week",
         "I exercise 5 - 7 times a week",
+      ],
+      meats: [
+        {name:  "Beef"},
+        {name:  "Chicken"},
+        {name:  "Turkey"},
+        {name:  "Fish"},
+        {name:  "Pork"},
+        {name:  "Shrimp"}
       ],
       nextStepStatus: false,
     },

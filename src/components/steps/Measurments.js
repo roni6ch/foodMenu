@@ -17,17 +17,17 @@ export default function Genders() {
     const classes = useStyles();
     const { errors, register } = useForm({ mode: 'onChange' });
     const { formState, formDispatch } = useContext(FormContext);
-    const { flowState, flowDispatch } = useContext(FlowContext);
+    const { flowDispatch } = useContext(FlowContext);
 
     useEffect(() => {
         const emptyFields = Object.values(formState.measurments).some(field => {
-            return field == ""
+            return field === ""
         });
         if (Object.keys(errors).length === 0 && !emptyFields)
             flowDispatch({ type: 'NEXT_STEP_STATUS', payload: true });
         else
             flowDispatch({ type: 'NEXT_STEP_STATUS', payload: false });
-    }, [formState.measurments]);
+    }, [formState.measurments,flowDispatch,errors]);
 
     return (<>
             {Object.keys(formState.measurments).map(key => <Grid xs={6} item key={key}>

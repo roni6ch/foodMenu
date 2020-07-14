@@ -11,4 +11,5 @@ export const constants = {
     AGE:'AGE',
     TARGET:'TARGET',
     ACTIVITY:'ACTIVITY',
+    MEAT:'MEAT',
   };

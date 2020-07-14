@@ -14,6 +14,8 @@ import FlowContext from "../store/FlowContext";
 import Genders from "./steps/Genders";
 import Measurments from "./steps/Measurments";
 import Activity from "./steps/Activity";
+import Meats from "./steps/Meats";
+import Finish from "./steps/Finish";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,6 +48,8 @@ function Base() {
         return <Measurments />;
       case 2:
         return <Activity />;
+      case 3:
+          return <Meats />;
       default:
         return;
     }
@@ -53,7 +57,7 @@ function Base() {
   useEffect(() => {
     flowDispatch({ type: "NEXT_STEP_STATUS", payload: false });
     setLevel(stepLevel());
-  }, [flowState.step]);
+  }, [flowState.step,flowDispatch]);
 
   return (
     <Grid item xs={9}>
@@ -66,7 +70,7 @@ function Base() {
         >
           <h2>{flowState.stepNames[flowState.step]}</h2>
           <Grid className={`${classes.paper}`} container spacing={3}>
-          {level}
+          {flowState.step < flowState.stepNames.length ? level : <Finish />}
           </Grid>
         </form>
 

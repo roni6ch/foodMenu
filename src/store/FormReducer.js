@@ -17,6 +17,13 @@ const formReducer = (state, action) => {
       return { ...state, measurments: { ...state.measurments, target: action.payload } };
     case formConstants.ACTIVITY:
       return { ...state, activity: action.payload };
+    case formConstants.MEAT:
+      const meats = state.meats.slice();
+      console.log(meats);
+      const meatIndex = meats.findIndex(meat => meat === action.payload);
+      if (meatIndex === -1) meats.push(action.payload);
+      else meats.splice(meatIndex,1);
+      return { ...state, meats };
     default:
       return state;
   }
@@ -32,6 +39,7 @@ const useGlobalFormState = () => {
       target: ''
     },
     activity: null,
+    meats:[]
   }, null, 'useGlobalFormState');
   return { formState, formDispatch };
 };
