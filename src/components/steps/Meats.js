@@ -34,9 +34,9 @@ export default function Meats() {
     }, [formState.meats]);
 
     return (<>
-        <FormGroup>
-            {flowState.meats.map((meat, index) => <FormControlLabel key={meat.name}
-                control={<Checkbox checked={formState.meats.find(m=> m === meat.name) ? true : false} 
+        <FormGroup className={classes.radioGroup}>
+            {flowState.meats.map((meat, index) => <FormControlLabel key={meat.name} 
+                control={<Checkbox checked={formState.meats.find(m=> m === meat.name) ? true : false}  
                 onChange={() => handleChange(meat.name)} name={meat.name} />}
                 label={meat.name} />
             )}

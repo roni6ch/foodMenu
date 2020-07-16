@@ -11,8 +11,13 @@ import FlowContext from "./store/FlowContext";
 import FormContext from "./store/FormContext";
 /* Components */
 import Header from "./components/Header";
-import SideMenu from "./components/SideMenu";
-import Base from "./components/Base";
+import Bmi from "./components/Bmi";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,20 +34,25 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   return (
-    <> 
-      <Header />
-      <Container fixed>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <FlowContext.Provider value={useGlobalFlowState()}>
-            <FormContext.Provider value={useGlobalFormState()}>
-              <SideMenu />
-              <Base/>
-            </FormContext.Provider>
-            </FlowContext.Provider>
-          </Grid>
-        </div>
-      </Container>
+    <>
+      <Router>
+        <FlowContext.Provider value={useGlobalFlowState()}>
+          <FormContext.Provider value={useGlobalFormState()}>
+            <Header />
+            <Container fixed>
+              <div className={classes.root}>
+
+
+           <Switch>
+                <Route path="/" component={Bmi} />
+         </Switch>
+
+               
+              </div>
+            </Container>
+          </FormContext.Provider>
+        </FlowContext.Provider>
+      </Router>
     </>
   );
 }

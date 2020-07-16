@@ -18,8 +18,9 @@ const useGlobalFlowState = () => {
   const [flowState, flowDispatch] = useReducer(
     flowReducer,
     {
-      step: 3,
-      stepNames: ["Gender", "Measurments", "Activity","Meats"],
+      menu:['bmi','food-menu'],
+      step: 0,
+      stepNames: ["genders", "measurments", "activity","meats"],
       activities: [
         "Almost no physical activity",
         "I often go for a walk",
@@ -35,6 +36,49 @@ const useGlobalFlowState = () => {
         {name:  "Pork"},
         {name:  "Shrimp"}
       ],
+
+    measurments: [
+      {
+        name : "height",
+        defaultValue : 175,
+        min : 40,
+        max : 220,
+        step:1,
+        marks:[{
+          value: 160,
+          label: '160',
+        },
+      {
+        value: 170,
+        label: '170',
+      },{
+          value: 180,
+          label: '180',
+        },]
+      },
+      {
+        name : "weight",
+        defaultValue : 75,
+        min : 40,
+        max : 150,
+        step:1,
+      },
+      {
+        name : "age",
+        defaultValue : 25,
+        min : 12,
+        max : 100,
+        step:1,
+      },
+      {
+        name : "target",
+        label : "target weight",
+        defaultValue : 60,
+        min : 40,
+        max : 220,
+        step:1,
+      },
+    ], 
       nextStepStatus: false,
     },
     null,

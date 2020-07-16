@@ -2,6 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { constants } from "./../helpers/constants";
 import { useState } from "reinspect";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 /* material-ui */
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -73,8 +79,8 @@ function Base() {
           {flowState.step < flowState.stepNames.length ? level : <Finish />}
           </Grid>
         </form>
-
         <Divider light className={classes.divider} />
+        {flowState.step < flowState.stepNames.length &&
         <Grid className={classes.bottomWrapper} container>
           <Button
             disabled={flowState.step === 0}
@@ -93,6 +99,7 @@ function Base() {
               : "Next"}
           </Button>
         </Grid>
+        }
       </Paper>
     </Grid>
   );

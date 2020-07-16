@@ -20,6 +20,7 @@ export default function Activity() {
     const { formState, formDispatch } = useContext(FormContext);
 
     useEffect(() => {
+        if (formState.activity)
         flowDispatch({ type: 'NEXT_STEP_STATUS', payload: true });
     }, [formState.activity, flowDispatch]);
 

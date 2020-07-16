@@ -19,7 +19,6 @@ const formReducer = (state, action) => {
       return { ...state, activity: action.payload };
     case formConstants.MEAT:
       const meats = state.meats.slice();
-      console.log(meats);
       const meatIndex = meats.findIndex(meat => meat === action.payload);
       if (meatIndex === -1) meats.push(action.payload);
       else meats.splice(meatIndex,1);
@@ -33,10 +32,10 @@ const useGlobalFormState = () => {
   const [formState, formDispatch] = useReducer(formReducer, {
     gender: '',
     measurments: {
-      height: '',
-      age: '',
-      weight: '',
-      target: ''
+      height: 185,
+      weight: 75,
+      age: 25,
+      target: 60
     },
     activity: null,
     meats:[]
