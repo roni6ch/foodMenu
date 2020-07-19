@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
-import { formConstants } from '../../helpers/constants';
+import { formConstants } from '../../../helpers/constants';
 import { makeStyles } from "@material-ui/core/styles";
 /* material-ui */
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 /* store */
-import FormContext from "../../store/FormContext";
-import FlowContext from "../../store/FlowContext";
+import FormContext from "../../../store/FormContext";
+import FlowContext from "../../../store/FlowContext";
 
 const useStyles = makeStyles((theme) => ({
     radioGroup: {

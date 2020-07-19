@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import FormContext from "../../store/FormContext";
-import FlowContext from "../../store/FlowContext";
-import { formConstants } from '../../helpers/constants';
+import FormContext from "../../../store/FormContext";
+import FlowContext from "../../../store/FlowContext";
+import { formConstants } from '../../../helpers/constants';
 
 const useStyles = makeStyles((theme) => ({
     gendersWrapper:{

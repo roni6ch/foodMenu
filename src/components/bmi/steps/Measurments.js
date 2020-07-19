@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { makeStyles } from "@material-ui/core/styles";
 /* store */
-import FormContext from "../../store/FormContext";
-import FlowContext from "../../store/FlowContext";
+import FormContext from "../../../store/FormContext";
+import FlowContext from "../../../store/FlowContext";
 /* material-ui */
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';

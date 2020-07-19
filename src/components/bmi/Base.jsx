@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,Suspense, lazy } from "react";
 import { useForm } from "react-hook-form";
-import { constants } from "./../helpers/constants";
+import { constants } from "../../helpers/constants";
 import { useState } from "reinspect";
 import {
   BrowserRouter as Router,
@@ -15,13 +15,13 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 /* store */
-import FlowContext from "../store/FlowContext";
+import FlowContext from "../../store/FlowContext";
 /* Components */
-import Genders from "./steps/Genders";
-import Measurments from "./steps/Measurments";
-import Activity from "./steps/Activity";
-import Meats from "./steps/Meats";
 import Finish from "./steps/Finish";
+const Measurments = lazy(() => import("./steps/Measurments"));
+const Activity = lazy(() => import("./steps/Activity"));
+const Meats = lazy(() => import("./steps/Meats"));
+const Genders = lazy(() => import("./steps/Genders"));
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,13 +49,13 @@ function Base() {
   const stepLevel = () => {
     switch (flowState.step) {
       case 0:
-        return <Genders />;
+        return <Genders/>;
       case 1:
-        return <Measurments />;
+        return <Measurments/>;
       case 2:
-        return <Activity />;
+        return <Activity/>;
       case 3:
-          return <Meats />;
+          return <Meats/>;
       default:
         return;
     }
@@ -76,7 +76,10 @@ function Base() {
         >
           <h2>{flowState.stepNames[flowState.step]}</h2>
           <Grid className={`${classes.paper}`} container spacing={3}>
+            
+  <Suspense fallback={<div>Loading...</div>}>
           {flowState.step < flowState.stepNames.length ? level : <Finish />}
+          </Suspense>
           </Grid>
         </form>
         <Divider light className={classes.divider} />

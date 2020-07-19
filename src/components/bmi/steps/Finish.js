@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { formConstants } from '../../helpers/constants';
+import { formConstants } from '../../../helpers/constants';
 import { makeStyles } from "@material-ui/core/styles";
 import { PieChart, Pie, Sector, Cell ,ResponsiveContainer} from 'recharts';
 /* material-ui */
 /* store */
-import FormContext from "../../store/FormContext";
-import FlowContext from "../../store/FlowContext";
+import FormContext from "../../../store/FormContext";
+import FlowContext from "../../../store/FlowContext";
 
 
 const data = [

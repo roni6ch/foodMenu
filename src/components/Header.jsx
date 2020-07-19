@@ -1,10 +1,6 @@
-import React, { useState, useContext } from "react";
-import { createStyles, makeStyles} from "@material-ui/core/styles";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Link,
-} from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
 /* store */
 import FlowContext from "../store/FlowContext";
 
@@ -20,6 +16,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -31,6 +28,9 @@ const useStyles = makeStyles((theme) =>
     },
     title: {
       flexGrow: 1,
+      "& .MuiLink-root": {
+        textDecoration: "none",
+      },
     },
   })
 );
@@ -39,6 +39,11 @@ export default function ButtonAppBar() {
   const classes = useStyles();
   const [state, setState] = useState({ menu: false });
   const { flowState, flowDispatch } = useContext(FlowContext);
+  const navLinkRef = React.forwardRef((props, ref) => (
+    <div ref={ref}>
+      <NavLink {...props} />
+    </div>
+  ));
 
   const toggleDrawer = (event, menu) => {
     if (
@@ -57,7 +62,15 @@ export default function ButtonAppBar() {
             <MenuIcon onClick={(e) => toggleDrawer(e, true)} />
           </Button>
           <Typography variant="h6" className={classes.title}>
-            Food Menu
+            <Link
+              href="#"
+              color="inherit"
+              exact
+              component={navLinkRef}
+              to={"/"}
+            >
+              Food Menu
+            </Link>
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
@@ -67,19 +80,19 @@ export default function ButtonAppBar() {
           onClick={(e) => toggleDrawer(e, false)}
           onKeyDown={(e) => toggleDrawer(e, false)}
         >
-            {flowState.menu.map((label, index) => (
-              <React.Fragment key={label}>
+          {flowState.menu.map((label, index) => (
+            <React.Fragment key={label}>
+              <NavLink exact activeClassName="active" to={label}>
                 <ListItem button>
-                  <NavLink exact activeClassName="active" to={label}>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    {label}
-                  </NavLink>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  {label}
                 </ListItem>
-                <Divider />
-              </React.Fragment>
-            ))}
+              </NavLink>
+              <Divider />
+            </React.Fragment>
+          ))}
         </List>
       </Drawer>
     </div>
