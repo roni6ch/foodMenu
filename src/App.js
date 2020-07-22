@@ -21,7 +21,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: "20px",
+    marginTop: "20px"
   },
   paper: {
     padding: theme.spacing(2),

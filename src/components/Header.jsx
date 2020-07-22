@@ -64,7 +64,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="#"
-              color="inherit"
+              color="red"
               exact
               component={navLinkRef}
               to={"/"}
