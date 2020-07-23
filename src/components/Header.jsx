@@ -57,8 +57,13 @@ export default function ButtonAppBar() {
   return ( 
     <div className={classes.root}>
       <AppBar position="static">
+<<<<<<< HEAD
           <Toolbar>
           <Button> 
+=======
+            <Toolbar>
+          <Button>
+>>>>>>> master
             <MenuIcon onClick={(e) => toggleDrawer(e, true)} />
           </Button>
           <Typography variant="h6" className={classes.title}>
